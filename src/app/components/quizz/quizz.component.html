@@ -1,0 +1,29 @@
+<div class="quizz__container">
+  <div class="quizz__logo">
+    <img 
+      src="assets/logo_quiz.png" 
+      alt="" 
+      srcset=""
+      height="200px"
+    >
+    <h3>{{ questionsData[selectedQuestion].category }}</h3>
+  </div>
+
+  <div class="quizz__questions">
+    <h3>{{ questionsData[selectedQuestion].question | decodetext }}</h3>
+  </div>
+
+  <div class="quizz__options">
+    <button
+      *ngFor="let answer of questionsData[selectedQuestion].answers" 
+      class="btn__option"
+    >
+      {{ answer }}
+    </button>
+  </div>
+
+  <div class="quizz__results">
+    <h1>O seu resultado é:</h1>
+    <p>Resposta selecionada</p>
+  </div>
+</div>
