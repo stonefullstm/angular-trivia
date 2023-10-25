@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   triviaAPI: 'https://opentdb.com/api.php',
+  questionsNumber: 5,
 };
 
 /*

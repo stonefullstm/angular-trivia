@@ -12,7 +12,19 @@
   <div class="quizz__questions">
     <h3>{{ questionsData[selectedQuestion].question | decodetext }}</h3>
   </div>
-
+  <div class="quizz__buttons">
+    <button
+      (click)="nextQuestion()"
+      [disabled]="selectedQuestion >= questionsNumber - 1"
+    >
+      Next
+    </button>
+    <button
+      (click)="getQuestions()"
+    >
+      New Game
+    </button>
+  </div>
   <div class="quizz__options">
     <button
       *ngFor="let answer of questionsData[selectedQuestion].answers" 

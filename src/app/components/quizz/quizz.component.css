@@ -75,3 +75,16 @@
   justify-content: center;
   align-items: center;
 }
+
+.quizz__buttons {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+}
+
+.quizz__buttons > button {
+  color: black;
+  margin-left: 10px;
+  width: 100px;
+  height: 35px;
+}
