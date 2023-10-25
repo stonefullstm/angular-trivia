@@ -4,38 +4,42 @@
       src="assets/logo_quiz.png" 
       alt="" 
       srcset=""
-      height="200px"
+      height="180px"
     >
     <h3>{{ questionsData[selectedQuestion].category }}</h3>
+    <span>Difficulty: {{ questionsData[selectedQuestion].difficulty }}</span>
   </div>
 
-  <div class="quizz__questions">
-    <h3>{{ questionsData[selectedQuestion].question | decodetext }}</h3>
+  <div class="quizz_questions__container">
+    <div class="quizz__questions">
+      <h3>{{ questionsData[selectedQuestion].question | decodetext }}</h3>
+    </div>
+    <div class="quizz__buttons">
+      <button
+        (click)="nextQuestion()"
+        [disabled]="selectedQuestion >= questionsNumber - 1"
+      >
+        Next
+      </button>
+      <button
+        (click)="getQuestions()"
+      >
+        New Game
+      </button>
   </div>
-  <div class="quizz__buttons">
-    <button
-      (click)="nextQuestion()"
-      [disabled]="selectedQuestion >= questionsNumber - 1"
-    >
-      Next
-    </button>
-    <button
-      (click)="getQuestions()"
-    >
-      New Game
-    </button>
   </div>
   <div class="quizz__options">
     <button
       *ngFor="let answer of questionsData[selectedQuestion].answers" 
       class="btn__option"
+      (click)="playerChoose(answer)"
     >
       {{ answer }}
     </button>
   </div>
 
   <div class="quizz__results">
-    <h1>O seu resultado é:</h1>
-    <p>Resposta selecionada</p>
+    <h1>Your result is:</h1>
+    <p>{{ totalPoints }} points</p>
   </div>
 </div>

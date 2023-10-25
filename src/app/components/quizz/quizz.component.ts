@@ -13,6 +13,13 @@ export class QuizzComponent implements OnInit {
   questionsData: QuestionData[] = [];
   selectedQuestion: number = 0;
   questionsNumber: number = environment.questionsNumber;
+  finished: boolean = false;
+  totalPoints: number = 0;
+  points: { [key: string]: number; } = {
+    "easy": 1,
+    "medium": 2,
+    "hard": 3
+  }
 
   constructor(
     private service: QuestionsService
@@ -29,6 +36,7 @@ export class QuizzComponent implements OnInit {
       }
     })
     this.selectedQuestion = 0;
+    this.totalPoints = 0;
   }
 
   shuffleArray(array: string[]): string[] {
@@ -46,5 +54,11 @@ export class QuizzComponent implements OnInit {
 
   nextQuestion() {
     this.selectedQuestion += 1;
+  }
+
+  playerChoose(answer: string) {
+    if (answer === this.questionsData[this.selectedQuestion].correct_answer) {
+      this.totalPoints += this.points[this.questionsData[this.selectedQuestion].difficulty]; 
+    }
   }
 }
